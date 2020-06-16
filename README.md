@@ -4,7 +4,3 @@
 
 Queenie Ho http://queenieio.com  
 https://www.linkedin.com/in/queenieho1/
-
-
-Chris Rollins https://github.com/chrisrollins  
-https://www.linkedin.com/in/chris-rollins-2669a053

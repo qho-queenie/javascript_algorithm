@@ -1,10 +1,10 @@
-findUniq([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ]) === 'BbBb'
-findUniq([ 'abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba' ]) === 'foo'
-Strings may contain spaces. Spaces is not significant, only non-spaces symbols matters. E.g. string that contains only spaces is like empty string.
-
-It’s guaranteed that array contains more than 3 strings.
-
-This is the second kata in series:
+// findUniq([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ]) === 'BbBb'
+// findUniq([ 'abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba' ]) === 'foo'
+// Strings may contain spaces. Spaces is not significant, only non-spaces symbols matters. E.g. string that contains only spaces is like empty string.
+//
+// It’s guaranteed that array contains more than 3 strings.
+//
+// This is the second kata in series:
 
 function findUniq(arr) {
   let transformed = arr.map(x => x.toLowerCase().split('').sort().join('').trim().normalize('NFD'));

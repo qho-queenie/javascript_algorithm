@@ -1,3 +1,8 @@
+function Node(data) {
+  this.data = data;
+  this.next = null;
+}
+
 // Linked Lists - Length & Count
 //
 // Implement Length() to count the number of nodes in a linked list.
@@ -97,18 +102,6 @@ function buildOneTwoThree() {
 // The index should be in the range [0..length-1]. If it is not, GetNth() should throw/raise an exception (ArgumentException in C#,
 // InvalidArgumentException in PHP). You should also raise an exception (ArgumentException in C#, InvalidArgumentException in PHP) if the list is empty/null/None.
 
-function Node(data) {
-  this.data = data;
-  this.next = null;
-}
-
-function length(head) {
-  if (head==null)
-      return 0;
-  else
-      return 1 + length(head.next);
-}
-
 function getNth(node, index) { //what is the data stored at index
   let counter = 0;
   let current = node;
@@ -133,4 +126,41 @@ function getNth(node, index) {
     throw new Error('Invalid node at ' + index);
 
   return (index === 0) ? node : getNth(node.next, index - 1);
+}
+
+
+// Linked Lists - Insert Nth
+//
+// Implement an InsertNth() function (insert_nth() in PHP) which can insert a new node at any index within a list.
+//
+// InsertNth() is a more general version of the Push() function that we implemented in the first kata listed below. Given a list, an index 'n' in the range 0..length, and a data element, add a new node to the list so that it has the given index. InsertNth() should return the head of the list.
+//
+// insertNth(1 -> 2 -> 3 -> null, 0, 7) === 7 -> 1 -> 2 -> 3 -> null)
+// insertNth(1 -> 2 -> 3 -> null, 1, 7) === 1 -> 7 -> 2 -> 3 -> null)
+// insertNth(1 -> 2 -> 3 -> null, 3, 7) === 1 -> 2 -> 3 -> 7 -> null)
+
+function insertNth(head, index, data) {
+  let counter = 1;
+  let current = head;
+  let newNode = new Node(data);
+  let previous;
+
+  if(head == null){
+    return newNode;
+  }
+
+  if(index == 0){
+    newNode.next = head;
+    return newNode;
+  }
+
+  while(counter < index){
+    previous = current;
+    current = current.next;
+    counter++;
+  }
+    let next = current.next;
+    current.next = newNode;
+    newNode.next = next;
+    return head;
 }

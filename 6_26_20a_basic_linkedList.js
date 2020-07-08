@@ -170,11 +170,6 @@ function Node(data) {
   this.next = null;
 }
 
-function Node(data) {
-  this.data = data;
-  this.next = null;
-}
-
 function insertNth(head, index, data) {
   let counter = 1;
   let newNode = new Node(data);
@@ -194,13 +189,10 @@ function insertNth(head, index, data) {
     counter++;
   }
   // once find the index spot in the linked list:
-
   newNode.next = current.next;
   // first save the right end of the original ll by setting it as the newNode's next
-
   current.next = newNode;
   // then connect the end of the list to the left of the ll
-
   return head;
 }
 
@@ -210,12 +202,12 @@ function insertNth(head, index, data) {
     return new Node(data);
 
   if (index == 0){ // once index has been reduced to 0, the next node is the newNode
-    let newNode = new Node(data);
-    newNode.next = head;
-    return newNode;
+    return new Node(data, head);
   }
 
   head.next = insertNth(head.next, index - 1, data);
   return head; // head.next = head (which is head.next) as long as index is still > 0
+
+  return new Node(head.data, insertNth(head.next, index - 1, data));
 
 }

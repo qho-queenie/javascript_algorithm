@@ -64,3 +64,51 @@ function sortedMerge(first, second) {
   }
   return result.next;
 }
+
+
+function sortedMerge(first, second) {
+  if(first == null){
+    return second;
+  }
+
+  if(second == null){
+    return first;
+  }
+
+  let result = new Node(null);
+  let current = result;
+
+  while(first != null && second != null){
+    if(first.data <= second.data){
+      current.next = new Node(first.data);
+      current = current.next;
+      first = first.next;
+    }
+    else if(second.data < first.data){
+      current.next = new Node(second.data);
+      current = current.next;
+      second = second.next;
+    }
+  }
+  if(first == null){
+    current.next = second;
+  }
+  if(second == null){
+    current.next = first;
+  }
+  return result.next;
+}
+
+// function Node(data) {
+//   this.data = data === undefined ? null : data;
+//   this.next = null;
+// }
+//
+// function sortedMerge(first, second) {
+//   if (!first) return second;
+//   if (!second) return first;
+//
+//   const [min, max] = first.data < second.data ? [first, second] : [second, first];
+//   min.next = sortedMerge(min.next, max);
+//   return min;
+// }

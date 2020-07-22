@@ -27,3 +27,31 @@ function reverse(list){
   }
   return result;
 }
+
+function reverse(list){
+  let result = new Node(null);
+  let current = list;
+  while(current != null){
+    let newNode = new Node(current.data);
+    newNode.next = result;
+    result = newNode;
+    current = current.next;
+  }
+  return result;
+}
+
+
+// function reverse(list){
+//   if(!list){
+//     return null;
+//   }
+//   let prev = null;
+//   let current = list;
+//   while(current != null){
+//     let next = current.next;
+//     current.next = prev;
+//     prev = current;
+//     current = next;
+//   }
+//   return prev;
+// }

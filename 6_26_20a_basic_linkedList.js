@@ -31,6 +31,15 @@ function length(head){
   return count;
 }
 
+// function length(head){
+// 	let count = 0;
+// 	while(head != null){
+// 		count++;
+// 		head = head.next;
+// 	}
+// 	return count;
+// }
+
 // function length(head) {
 //   if (head==null)
 //       return 0;

@@ -28,6 +28,8 @@ function reverse(list){
   return result;
 }
 
+// inspired by http://cslibrary.stanford.edu/105/LinkedListProblems.pdf
+// MoveNode()'s concept
 function reverse(list){
   let result = new Node(null);
   let current = list;
@@ -40,18 +42,46 @@ function reverse(list){
   return result;
 }
 
+// inpired by https://www.geeksforgeeks.org/reverse-a-linked-list/
+function reverse(list){
+  if(!list){
+    return null;
+  }
+  let prev = null;
+  let current = list;
+  while(current != null){
+    let next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  return prev;
+}
 
-// function reverse(list){
-//   if(!list){
-//     return null;
-//   }
-//   let prev = null;
-//   let current = list;
-//   while(current != null){
-//     let next = current.next;
-//     current.next = prev;
-//     prev = current;
-//     current = next;
-//   }
-//   return prev;
-// }
+// from codewar:
+function reverse(list) {
+  if (!list) return null
+
+  let result
+  for (let node = list; node; node = node.next) {
+    result = new Node(node.data, result)
+  }
+
+  list.data = result.data
+  list.next = result.next
+}
+
+// from codewar, by pushing everything into an array first
+function reverse(list) {
+    const values = [];
+    let currentNode = list;
+    while (currentNode) {
+      values.push(currentNode.data);
+      currentNode = currentNode.next;
+    }
+    currentNode = list;
+    while (currentNode) {
+      currentNode.data = values.pop();
+      currentNode = currentNode.next;
+    }
+}

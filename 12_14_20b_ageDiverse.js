@@ -37,6 +37,18 @@
 // and easy to follow katas which have been designed to allow mastering the use of higher-order functions.
 // In JavaScript this includes methods like: forEach, filter, map, reduce, some, every, find, findIndex. Other approaches to solving the katas are of course possible.
 
+function isAgeDiverse(list) {
+  let toDigit = [... new Set(list.map(x => firstDigit(x.age)))];
+  return toDigit.length == 10? true: false;
+}
+  let firstDigit = (num) =>{
+  if (num > 100){
+    return 100;
+  }
+  num = parseInt(num.toString().substring(0, 1));
+  return num;
+}
+
 let convertAge = num => Math.min(Math.floor(num / 10), 10);
 
 let isAgeDiverse = list => [...new Set(list.map(eachPerson => convertAge(eachPerson.age)).filter(Number))].length == 10;

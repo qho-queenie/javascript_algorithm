@@ -27,4 +27,7 @@ let majorityElement = nums => {
     nums.forEach(eachNum => countObj.hasOwnProperty(eachNum)? countObj[eachNum] += 1 : countObj[eachNum] = 1);
     return Object.entries(countObj).sort((a, b) => b[1] - a[1])[0][0];
     //return Object.keys(countObj).find(key => countObj[key] == Object.values(countObj).sort((a,b) => b - a)[0]);
+
+    // this is even better, just sort the nums array and return the element before (nums' length /2 - 1):
+    // return nums.sort((a,b) => a-b)[Math.floor(nums.length/2)];
 };

@@ -73,5 +73,10 @@ var addToArrayForm = function(A, K) {
         }
     }
     result = result.reverse();
-    return result;    
+    return result;
+};
+
+// there is a new js datatype BigInt to represent > 2^53
+var addToArrayForm = function(A, K) {
+  return [...(BigInt(A.join('')) + BigInt(K) + '')];
 };

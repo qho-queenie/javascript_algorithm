@@ -49,3 +49,31 @@ var reverseVowels = function(s) {
     }
     return s.join('');
 };
+
+
+
+var reverseVowels = function(s) {
+    s = [...s];
+    let front = 0;
+    let back = s.length -1;
+
+    let checkVowel = letter => {
+        let vowelPos = "aeiouAEIOU".indexOf(letter);
+        return vowelPos === -1? false:true;
+    }
+
+    while(front < back){
+        if(checkVowel(s[front]) && checkVowel(s[back])){
+            [s[front], s[back]] = [s[back], s[front]];
+            front++;
+            back--;
+        }
+        else if (checkVowel(s[front])){
+          back--;
+        }
+        else{
+          front++
+        }
+    }
+    return s.join('');
+};

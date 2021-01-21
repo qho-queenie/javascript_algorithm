@@ -16,3 +16,18 @@ function reverse(list) {
 
   return tmp;
 }
+
+// iteratively:
+// just plugging the head out, and creating a new list with it:
+var reverseList = function(list) {
+    let next = null;
+    let prev = null;
+
+    while(list){
+        next = list.next;
+        list.next = prev;
+        prev = list;
+        list = next;
+    }
+    return prev;
+};

@@ -10,6 +10,7 @@
 // Input: root = [4,2,7,1,3], val = 5
 // Output: []
 
+// recursion with helper func
 var searchBST = function(root, val) {
     if (root === null) {
         return null;
@@ -23,4 +24,22 @@ var searchBST = function(root, val) {
     else {
         return root;
     }
+};
+
+// pure recursion
+var searchBST = function(root, val) {
+    if(!root) return root;
+    if(root.val === val) return root;
+    else if(root.val > val) return searchBST(root.left,val);
+    else if(root.val < val) return searchBST(root.right,val);
+};
+
+// iterative
+var searchBST = function(root, val) {
+    while(root){
+        if(root.val > val) root = root.left;
+        else if(root.val < val) root = root.right;
+        else return root;
+    }
+    return root;
 };

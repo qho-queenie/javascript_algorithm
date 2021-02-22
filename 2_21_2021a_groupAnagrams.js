@@ -11,15 +11,17 @@ var groupAnagrams = function(strs) {
     let strsSort = strs.forEach(x => sortedLetters.push([...x].sort()));
     let hash = {};
 
-    let addToObjArr = (arr, val) =>{
-      arr.push(strs[val]);
-      return arr;
-    }
-
     for(var i = 0; i < sortedLetters.length; i++){
-      if(hash[sortedLetters[i]]) hash[sortedLetters[i]] = addToObjArr(hash[sortedLetters[i]], i);
+      if(hash[sortedLetters[i]]) hash[sortedLetters[i]].push(strs[i]);
       else hash[sortedLetters[i]] = [strs[i]];
     }
 
     return Object.values(hash);
 };
+
+
+// Time Complexity: O(NK \log K)O(NKlogK), where NN is the length of strs, and KK 
+// is the maximum length of a string in strs. The outer loop has complexity O(N)O(N)
+// as we iterate through each string. Then, we sort each string in O(K \log K)O(KlogK) time.
+//
+// Space Complexity: O(NK)O(NK), the total information content stored in ans.

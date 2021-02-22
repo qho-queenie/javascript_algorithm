@@ -57,3 +57,47 @@ var threeSum = function(nums) {
 
     return multiDimensionalUnique(result);
 }
+
+
+
+// we set nums[i] and i++ as the target,
+// if any combinations in the rest of the array + current target is equal to zero, this is a result set
+
+// since the array is sorted,
+
+var threeSum = function(nums) {
+    let left, right, sum;
+    let answers = [];
+
+    if (nums.length < 3) return answers;
+    nums = nums.sort((a,b) => a - b);
+    for(var i = 0 ; i < nums.length; i++){
+        left = i + 1, right = nums.length - 1, sum = 0;
+
+        while(left < right){
+            // generate sum once for all of the following 3 checks, less computations
+            sum = nums[i] + nums[left] + nums[right];
+            if(sum === 0){
+                answers.push([nums[i], nums[left], nums[right]]);
+                // we check for duplicates first, then move on to the next ele (not a dup anymore)
+                while(nums[left] === nums[left + 1]) left++;
+                while(nums[right] === nums[right - 1]) right--;
+
+                left++;
+                right--;
+            }
+            else if(sum > 0){
+                // we dont need to check for duplicates in this case cause we need to try each combo's
+                right--;
+            }
+            else if(sum < 0){
+                // we dont need to check for duplicates in this case cause we need to try each combo's
+                left++;
+            }
+        }
+        // more optimization
+        while(nums[i] == nums[i+1]) i++;
+
+    }
+    return answers;
+};

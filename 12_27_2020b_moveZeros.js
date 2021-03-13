@@ -37,3 +37,17 @@ var moveZeroes = function(nums) {
         }
     }
 }
+
+let moveZeroes = nums => {
+  let lastNonZ = 0;
+  for(var i = 0; i < nums.length; i++){
+    if(nums[i] !== 0){
+      nums[lastNonZ] = nums[i];
+      lastNonZ++;
+    }
+  }
+  for(j = lastNonZ; j < nums.length; j++){
+    nums[j] = 0
+  }
+  return nums;
+}

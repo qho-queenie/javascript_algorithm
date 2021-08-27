@@ -47,3 +47,29 @@ let numArr = arrWords => {
     arrWords.forEach((x, i) => hash[x]? hash[x].push(i):hash[x] = [i]);
     return hash;
 }
+
+
+// no need to keep track of positions purposely, i can do this for us on the go
+
+let wordPattern = (pattern, s) => {
+    let sArr = s.split(' ');
+    let patternArr = pattern.split('');
+    let uniquesMap = new Map();
+
+    if(sArr.length !== patternArr.length) return false;
+
+    // this helps if the same value is mapped to different key in uniquesMap
+    if(new Set(patternArr).size !== new Set(sArr).size) return false;
+
+    for(var i = 0; i < patternArr.length; i++){
+        if(!uniquesMap.has(patternArr[i])){
+            uniquesMap.set(patternArr[i], sArr[i]);
+        }
+        else {
+            if(uniquesMap.get(patternArr[i]) !== sArr[i]){
+                return false;
+            }
+        }
+    }
+    return true;
+}

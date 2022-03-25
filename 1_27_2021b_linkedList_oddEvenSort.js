@@ -19,7 +19,7 @@ var oddEvenList = function(head) {
 
     if(!current)return null;
 
-    while(current && current.next && current.next.next){
+    while(current.next && current.next.next){
         evenCurrent.next = new ListNode(current.next.val);
         current.next = current.next.next;
         evenCurrent = evenCurrent.next;
@@ -29,5 +29,24 @@ var oddEvenList = function(head) {
         evenCurrent.next = current.next;
     }
     current.next = evenList.next
+    return head;
+};
+
+
+var oddEvenList = function(head) {
+    if(!head)return null;
+    let oddCurrent = head;
+    let evenList = head.next;
+    let evenCurrent = evenList;
+
+    while(oddCurrent.next && evenCurrent.next){
+        oddCurrent.next = oddCurrent.next.next;
+        evenCurrent.next = evenCurrent.next.next;
+
+        oddCurrent = oddCurrent.next;
+        evenCurrent = evenCurrent.next;
+    }
+
+    oddCurrent.next = evenList;
     return head;
 };
